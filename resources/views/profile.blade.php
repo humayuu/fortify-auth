@@ -17,23 +17,19 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body ">
-                        <h2>Profile Settings</h2>
-
-                        {{-- ===================== --}}
-                        {{-- UPDATE PROFILE FORM  --}}
-                        {{-- ===================== --}}
-                        <h3>Update Profile Information</h3>
+                        <h2 class="text-center">Profile Settings</h2>
+                        <h3 class="text-center">Update Profile Information</h3>
 
                         {{-- Success message --}}
                         @if (session('status') === 'profile-information-updated')
-                            <p class="success">✔ Profile updated successfully!</p>
+                            <p class="alert alert-success">✔ Profile updated successfully!</p>
                         @endif
 
                         {{-- Errors specifically for THIS form --}}
                         @if ($errors->updateProfileInformation->any())
                             <ul class="error">
                                 @foreach ($errors->updateProfileInformation->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    <li class="alert alert-danger">{{ $error }}</li>
                                 @endforeach
                             </ul>
                         @endif
@@ -43,12 +39,12 @@
                             @method('PUT')
 
                             <label>Name</label>
-                            <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}"
-                                required>
+                            <input type="text" class="form-control" name="name"
+                                value="{{ old('name', auth()->user()->name) }}" autofocus required>
 
                             <label>Email</label>
-                            <input type="email" name="email" value="{{ old('email', auth()->user()->email) }}"
-                                required>
+                            <input type="email" name="email" class="form-control"
+                                value="{{ old('email', auth()->user()->email) }}" required>
 
                             {{-- Show warning if email not verified --}}
                             @if (!auth()->user()->hasVerifiedEmail())
@@ -58,24 +54,26 @@
                                 </p>
                             @endif
 
-                            <button type="submit">Update Profile</button>
+                            <button class="btn btn-primary mt-4" type="submit">Update Profile</button>
                         </form>
-
-                        {{-- ===================== --}}
-                        {{-- UPDATE PASSWORD FORM --}}
-                        {{-- ===================== --}}
-                        <h3>Change Password</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 mx-auto">
+                <div class="card">
+                    <div class="card-body ">
+                        <h3 class="text-center fw-bold">Change Password</h3>
 
                         {{-- Success message --}}
                         @if (session('status') === 'password-updated')
-                            <p class="success">✔ Password changed successfully!</p>
+                            <p class="alert alert-success">✔ Password changed successfully!</p>
                         @endif
 
                         {{-- Errors specifically for THIS form --}}
                         @if ($errors->updatePassword->any())
                             <ul class="error">
                                 @foreach ($errors->updatePassword->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    <li class="alert alert-danger">{{ $error }}</li>
                                 @endforeach
                             </ul>
                         @endif
@@ -85,18 +83,19 @@
                             @method('PUT')
 
                             <label>Current Password</label>
-                            <input type="password" name="current_password" required>
+                            <input type="password" class="form-control" name="current_password" required>
 
                             <label>New Password</label>
-                            <input type="password" name="password" required>
+                            <input type="password" class="form-control" name="password" required>
 
                             <label>Confirm New Password</label>
-                            <input type="password" name="password_confirmation" required>
+                            <input type="password" class="form-control" name="password_confirmation" required>
 
-                            <button type="submit">Change Password</button>
+                            <button class="btn btn-success mt-4" type="submit">Change Password</button>
                         </form>
                     </div>
                 </div>
+                <a class="btn btn-success mt-5 px-4" href="{{ url('/dashboard') }}">Back</a>
             </div>
         </div>
     </div>

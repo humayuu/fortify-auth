@@ -13,20 +13,31 @@
 <body>
 
     <div class="container">
-        <div class="row  m-5">
-            <div class="col-6 mx-auto">
-                <div class="card">
-                    <div class="card-body ">
-                        <div class="d-flex justify-content-center">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="btn btn-primary px-4">Logout</button>
-                            </form>
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Laravel Fortify</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav mb-2  gap-3  mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="btn btn-dark px-4" aria-current="page" href="/profile">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button class="btn btn-primary px-4">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
-                        <h1 class="text-center mt-3">Laravel Fortify</h1>
-                        <a class="mt-3 h1" href="/profile">Profile</a>
                     </div>
-                </div>
+                </nav>
             </div>
         </div>
     </div>

@@ -17,17 +17,17 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body ">
-                        <h2>Forgot Password</h2>
-                        <p>Enter your email and we'll send a reset link.</p>
+                        <h2 class="text-center">Forgot Password</h2>
+                        <p class="text-center">Enter your email and we'll send a reset link.</p>
 
                         @if (session('status'))
-                            <p class="success">{{ session('status') }}</p>
+                            <p class="alert alert-success">{{ session('status') }}</p>
                         @endif
 
                         @if ($errors->any())
                             <ul class="error">
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    <li class="alert alert-danger">{{ $error }}</li>
                                 @endforeach
                             </ul>
                         @endif
@@ -35,11 +35,12 @@
                         <form method="POST" action="/forgot-password">
                             @csrf
                             <label>Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}" required>
-                            <button type="submit">Send Reset Link</button>
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                required>
+                            <button type="submit" class="btn btn-primary mt-4">Send Reset Link</button>
                         </form>
 
-                        <p><a href="/login">Back to Login</a></p>
+                        <p><a class="btn btn-dark px-4 mt-3" href="/login">Back to Login</a></p>
                     </div>
                 </div>
             </div>
