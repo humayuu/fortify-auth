@@ -17,12 +17,12 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body ">
-                        <h2>Reset Password</h2>
+                        <h2 class="text-center fw-bold text-primary">Reset Password</h2>
 
                         @if ($errors->any())
                             <ul class="error">
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    <li class="alert alert-danger">{{ $error }}</li>
                                 @endforeach
                             </ul>
                         @endif
@@ -33,12 +33,12 @@
                             <input type="hidden" name="email" value="{{ $request->email }}">
 
                             <label>New Password</label>
-                            <input type="password" name="password" required>
+                            <input type="password" class="form-control" name="password" autofocus required>
 
                             <label>Confirm Password</label>
-                            <input type="password" name="password_confirmation" required>
+                            <input type="password" class="form-control" name="password_confirmation" required>
 
-                            <button type="submit">Reset Password</button>
+                            <button type="submit" class="btn btn-primary">Reset Password</button>
                         </form>
                     </div>
                 </div>
